@@ -61,8 +61,11 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-    </nav>
-    <main>
+    </nav><main>
+<section id="github-repos">
+    <!-- The repo list will load here -->
+</section>
+    
         <section id="about">
             <h2>About Me</h2>
             <p>This is a paragraph about me.</p>
@@ -86,6 +89,14 @@
     </main>
     <footer>
         <p>Contact me at example@example.com</p>
-    </footer>
+    </footer><script>
+  fetch('repos.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('github-repos').innerHTML = data;
+    })
+    .catch(error => console.error('Error loading repositories:', error));
+</script>
+
 </body>
 </html>

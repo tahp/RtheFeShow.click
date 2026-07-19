@@ -17,15 +17,7 @@ nav li a:hover { color: var(--accent); }
 
 main { padding: 20px; max-width: 900px; margin: auto; }
 
-section { display: none; background: var(--bg-card); padding: 20px; margin-bottom: 20px; border-radius: 8px; }
-section:target { display: block; }
-
-#github-repos:not(:target) { display: block; }
-:target ~ #github-repos { display: none; }
-
-h2 { color: var(--accent); border-bottom: 1px solid #2f4553; padding-bottom: 10px; }
-input, textarea { width: 100%; background: #0f212e; border: 1px solid #2f4553; color: white; padding: 10px; border-radius: 4px; box-sizing: border-box; }
-input[type="submit"] { background: var(--accent); color: #000; border: none; padding: 10px 20px; cursor: pointer; }
+/* --- Section Visibility Logic --- */
 
 /* 1. Hide all sections by default */
 section {
@@ -41,7 +33,7 @@ section:target {
     display: block;
 }
 
-/* 3. If no section is targeted (initial load), show Projects by default */
+/* 3. If no section is targeted, show Projects by default */
 body:not(:has(:target)) #github-repos {
     display: block;
 }
@@ -51,4 +43,10 @@ body:not(:has(:target)) #github-repos {
 #contact:target ~ #github-repos {
     display: none;
 }
+
+/* --- UI Elements --- */
+
+h2 { color: var(--accent); border-bottom: 1px solid #2f4553; padding-bottom: 10px; }
+input, textarea { width: 100%; background: #0f212e; border: 1px solid #2f4553; color: white; padding: 10px; border-radius: 4px; box-sizing: border-box; }
+input[type="submit"] { background: var(--accent); color: #000; border: none; padding: 10px 20px; cursor: pointer; }
 

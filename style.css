@@ -52,3 +52,17 @@ input[type="submit"] { background: var(--accent); color: #000; border: none; pad
 
 a { color: var(--text-dim); text-decoration: none; padding: 10px 15px; font-weight: bold>
 a:hover { color: var(--accent); }
+
+/* --- Updated Link Visibility --- */
+#repo-content a {
+    color: #ffffff; /* Change from text-dim to white for better contrast */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+#repo-content a:hover {
+    color: var(--accent); /* Still turns bright green on hover */
+    text-decoration: underline; /* Adds underline on hover for clarity */
+}
+

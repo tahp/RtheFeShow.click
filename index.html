@@ -3,100 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web Page</title>
+    <title>Pugs' Dashboard</title>
     <style>
+        /* Stake-inspired color palette */
+        :root {
+            --bg-body: #0f212e;
+            --bg-card: #1a2c38;
+            --accent: #00e701; /* Signature bright green */
+            --text-main: #ffffff;
+            --text-dim: #b1bad3;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-            background-color: #000;
         }
+
         header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1em 0;
+            background-color: var(--bg-card);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #2f4553;
         }
+
+        header img { height: 40px; margin-right: 15px; }
+
         nav ul {
-            list-style-type: none;
+            display: flex;
+            list-style: none;
+            background: var(--bg-card);
+            padding: 10px 20px;
             margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #444;
         }
-        nav li {
-            float: left;
-        }
+
         nav li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
+            color: var(--text-dim);
             text-decoration: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            transition: color 0.2s;
         }
-        nav li a:hover {
-            background-color: #111;
-        }
-        main {
+
+        nav li a:hover { color: var(--accent); }
+
+        main { padding: 20px; max-width: 900px; margin: auto; }
+
+        section {
+            background: var(--bg-card);
             padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
         }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1em 0;
-            position: fixed;
-            bottom: 0;
+
+        h2 { color: var(--accent); border-bottom: 1px solid #2f4553; padding-bottom: 10px; }
+
+        input, textarea {
             width: 100%;
+            background: #0f212e;
+            border: 1px solid #2f4553;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+
+        button, input[type="submit"] {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-dim);
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
-    <header><img src=logo.png>
-        <h1>Welcome to My Web Page</h1>
+
+    <header>
+        <img src="logo.png" alt="Logo">
+        <h1>Dashboard</h1>
     </header>
+
     <nav>
         <ul>
+            <li><a href="#github-repos">Projects</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-    </nav><main>
-<section id="github-repos">
-    <!-- The repo list will load here -->
-</section>
-    
+    </nav>
+
+    <main>
+        <section id="github-repos">
+            <h2>GitHub Repositories</h2>
+            <div id="repo-content">Loading...</div>
+        </section>
+
         <section id="about">
             <h2>About Me</h2>
-            <p>This is a paragraph about me.</p>
+            <p>Developer and electronics tinkerer. Currently working on modular systems and automation.</p>
         </section>
-        <section id="projects">
-            <h2>My Projects</h2>
-            <p>This section will describe my projects.</p>
-        </section>
+
         <section id="contact">
             <h2>Contact Me</h2>
             <form action="#" method="post">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name"><br><br>
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email"><br><br>
-                <label for="message">Message:</label><br>
-                <textarea id="message" name="message"></textarea><br><br>
-                <input type="submit" value="Submit">
+                <label>Name:</label>
+                <input type="text" name="name">
+                <label>Message:</label>
+                <textarea name="message"></textarea>
+                <input type="submit" value="Send Message">
             </form>
         </section>
     </main>
+
     <footer>
-        <p>Contact me at example@example.com</p>
-    </footer><script>
-  fetch('repos.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('github-repos').innerHTML = data;
-    })
-    .catch(error => console.error('Error loading repositories:', error));
-</script>
+        <p>© 2026 Pugs | Built with precision.</p>
+    </footer>
+
+    <script>
+        fetch('repos.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('repo-content').innerHTML = data;
+            })
+            .catch(err => document.getElementById('repo-content').innerText = "Failed to load.");
+    </script>
 
 </body>
 </html>
+
